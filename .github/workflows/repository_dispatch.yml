@@ -1,0 +1,18 @@
+name: Trigger Update in Repository A
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  trigger-update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger repository_dispatch event in Repository nexa
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ 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 }} # Personal Access Token (PAT) with access to repository A
+          repository: samgec123/nexa # Replace with the owner and name of repository A
+          event-type: commons-updated
